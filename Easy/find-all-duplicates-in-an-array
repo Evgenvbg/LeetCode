@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+
+class Solution
+{
+public:
+    std::vector<int> findDuplicates(std::vector<int>& nums)
+    {
+        std::vector<int> ans;
+
+        for (int i = 0; i < nums.size(); i++)
+        {
+            int index = abs(nums[i]) - 1;
+
+            if (nums[index] < 0)
+            {
+                ans.push_back(index + 1);
+            }
+            else
+            {
+                nums[index] = -1 * nums[index];
+            }
+        }
+
+        return ans;
+    }
+};
+int main()
+{
+
+    std::cout << "Hello World!\n";
+    std::vector<int> vec{ 3,3,5,3 };
+    Solution a;
+    a.findDuplicates(vec);
+
+    return 0;
+}
